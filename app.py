@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # app config
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/songs'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/pythoncrud'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -12,15 +12,14 @@ import models
 
 
 # routes
-@app.route('/api/v1/songs', methods=['GET'])
+@app.route('/api/v1/users', methods=['GET'])
 def index():
     all_data = []
-    songs = models.Songs.query.all()
-    for song in songs:
+    users = models.Users.query.all()
+    for user in users:
         all_data.append({
-            'title': song.title,
-            'artist': song.artist,
-            'year': song.year
+            'email': user.email,
+            'password': user.password
         })
     return jsonify(all_data)
 

@@ -1,7 +1,9 @@
-from models import Songs
+from models import Users
 from app import db
 
-song = Songs('Can\'t stop', 'Red Hot Chili Peppers', 1970)
+user1 = Users('simba@lionking.com', 'mufasa')
+user2 = Users('hello@goodbye.com', 'lateralligator')
 
-db.session.add(song)
+db.session.add(user1)
+db.session.add(user2)
 db.session.commit()
